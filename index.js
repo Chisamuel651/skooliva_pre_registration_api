@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/student-pre-registration', studentPreegistrationRouter);
 
 
+
 // create a logger
 const logger = winston.createLogger({
     level: 'info',
