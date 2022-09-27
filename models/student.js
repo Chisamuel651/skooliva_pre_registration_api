@@ -39,8 +39,6 @@ const StudentSchema = mongoose.Schema({
     id_number:{
         type: String,
         required: true,
-        minlength: 9,
-        maxlength: 9
     },
     email:{
         type: String,

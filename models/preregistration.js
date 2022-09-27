@@ -38,11 +38,8 @@ const validateStudent = studentPre =>{
         regionOrigin:yup.string().required(),
         sex:yup.string().required(),
         residence:yup.string().required(),
-        id_number:yup
-            .string().required()
-            .min(9, 'Please your id number contains exactly 9 numbers')
-            .max(9, 'Please your id number contains exactly 9 numbers'),
-        email:yup.string().required().email(),
+        id_number:yup.string().required(),
+        email:yup.string().email(),
         nationality:yup.string().required(),
         faculty:yup.string().required(),
         specialty1:yup.string().required(),

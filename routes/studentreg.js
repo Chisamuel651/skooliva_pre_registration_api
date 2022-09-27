@@ -35,4 +35,54 @@ router.post('/', async (req,res) => {
     });
 });
 
+// get all data
+router.get('/', (req, res) => {
+    StudentPre.find().then(studentPre =>
+        res.send(studentPre)).catch((error) => {
+            res.status(500).send("Something went wrong try again");
+        }
+    )
+})
+
+// get data by id
+router.get('/:studentID', async (req,res) => {
+    const studentid = await StudentPre.findById(req.params.studentID);
+
+    if(!studentid) res.status(404).send('sorry! student donot exist');
+    res.send(studentid);
+});
+
+// update book based on the id
+router.put('/:studentID', async (req, res) => {
+    const updatedStudent = await StudentPre.findByIdAndUpdate(req.params.studentID, {
+        student:{
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            mobile: req.body.mobile,
+            dob: req.body.dob,
+            pob: req.body.pob,
+            regionOrigin: req.body.regionOrigin,
+            sex: req.body.sex,
+            residence: req.body.residence,
+            id_number: req.body.id_number,
+            email: req.body.email,
+            nationality: req.body.nationality
+        },
+        faculty: req.body.faculty,
+        specialty1: req.body.specialty1,
+        specialty2: req.body.specialty2,
+        specialty3: req.body.specialty3
+    }, {new:true});
+
+    if(!updatedStudent) res.status(404).send('the update failed');
+    res.send(updatedStudent);
+})
+
+// delete student based on id
+router.delete('/:studentID', async (req,res) => {
+    const studentid = await StudentPre.findByIdAndRemove(req.params.studentID);
+    if(!studentid) res.status(404).send('sorry! student was not deleted');
+    res.send("student is successfully deleted");
+})
+
 module.exports = router;
