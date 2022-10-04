@@ -22,6 +22,10 @@ const PreregistrationSchema = mongoose.Schema({
     specialty3:{
         type: String,
         required: true
+    },
+    level:{
+        type: String,
+        required: true
     }
 });
 

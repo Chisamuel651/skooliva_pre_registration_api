@@ -24,7 +24,8 @@ router.post('/', async (req,res) => {
         faculty: req.body.faculty,
         specialty1: req.body.specialty1,
         specialty2: req.body.specialty2,
-        specialty3: req.body.specialty3
+        specialty3: req.body.specialty3,
+        level: req.body.level
     });
 
     studentPre.save().then((studentPre) => {
@@ -71,7 +72,8 @@ router.put('/:studentID', async (req, res) => {
         faculty: req.body.faculty,
         specialty1: req.body.specialty1,
         specialty2: req.body.specialty2,
-        specialty3: req.body.specialty3
+        specialty3: req.body.specialty3,
+        level: req.body.level
     }, {new:true});
 
     if(!updatedStudent) res.status(404).send('the update failed');
